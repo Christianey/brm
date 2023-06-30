@@ -81,7 +81,7 @@ export default function Nav() {
         gap={4}
       >
         <Flex className="bor" alignItems={"center"} as={Link} gap={2} href={"/"}>
-          <Image height={"10"} src="/BRMLogoBlack.png" />
+          <Image height={"10"} src="/BRMLogoBlack.png" alt="BRM Logo"/>
           <Text fontWeight={"600"} lineHeight={1} display={["none", "none", "none", "block"]}>
             Bior Resources <br /> Management
           </Text>

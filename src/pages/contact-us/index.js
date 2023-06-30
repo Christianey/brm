@@ -75,6 +75,7 @@ export default function ContactUs() {
       <Image
         src={"/ContactUsImage.jpg"}
         display={["none", "none", "none", "block"]}
+        alt="Contact Us Image"
       />
     </Flex>
   );

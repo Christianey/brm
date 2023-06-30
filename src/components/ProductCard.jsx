@@ -20,7 +20,7 @@ export default function ProductCard({ bgColor, imgSrc }) {
         alignItems={"center"}
         justifyContent={"center"}
       >
-        <Image src={imgSrc} />
+        <Image src={imgSrc} alt="Product Image"/>
       </Flex>
       <Text fontWeight={"600"}>Raw Cashew Nuts (RCN)</Text>
 

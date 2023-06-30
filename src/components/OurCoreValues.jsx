@@ -28,16 +28,16 @@ export default function OurCoreValues() {
         mx={"auto"}
       >
         <Flex justify={"center"} p={2}>
-          <Image src="/CoreValue1.jpg" />
+          <Image alt="Core Value 1" src="/CoreValue1.jpg" />
         </Flex>
         <Flex justify={"center"} p={2}>
-          <Image src="/CoreValue2.jpg" />
+          <Image alt="Core Value 2" src="/CoreValue2.jpg" />
         </Flex>
         <Flex justify={"center"} p={2}>
-          <Image src="/CoreValue3.jpg" />
+          <Image alt="Core Value 3" src="/CoreValue3.jpg" />
         </Flex>
         <Flex justify={"center"} p={2}>
-          <Image src="/CoreValue4.jpg" />
+          <Image alt="Core Value 4" src="/CoreValue4.jpg" />
         </Flex>
       </Flex>
     </Box>

@@ -21,7 +21,7 @@ const CartItem = () => {
         justify={"center"}
         align={"center"}
       >
-        <Image src="/product1.png" />
+        <Image src="/product1.png" alt="Check-out Page Image"/>
       </Flex>
 
       <Flex direction={"column"} gap={2} px={4}>

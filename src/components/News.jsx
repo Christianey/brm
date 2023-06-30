@@ -20,7 +20,7 @@ export default function News() {
 
       <Text align={"center"}>
         By subscribing to our news alerts, you may be informed and up to date
-        our most <br /> recent information's about available offers, goods and
+        our most <br /> recent information&apos;s about available offers, goods and
         services from our <br /> news update.
       </Text>
 

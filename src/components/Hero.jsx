@@ -42,6 +42,7 @@ export default function Hero({ showButton, text, title, heroImage }) {
         position={"absolute"}
         bottom={["-10px", "-10px", "-30px", "-60px"]}
         width={"full"}
+        alt="background grunge effect"
       />
     </Flex>
   );

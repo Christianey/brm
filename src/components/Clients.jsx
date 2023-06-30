@@ -157,7 +157,7 @@ export function ClientCard({ image, firstName, lastName, job }) {
           <Avatar src={image} />
           <Flex direction="column">
             <Text>
-              {firstName}{" "}
+              {`${firstName} `}
               <Text as="span" fontWeight={"600"}>
                 {lastName}
               </Text>

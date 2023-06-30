@@ -39,7 +39,7 @@ export default function ProductPage() {
             px={2}
           >
             <Flex justify={"center"} align={"center"}>
-              <Image src="/SoyaBeans.png" />
+              <Image src="/SoyaBeans.png" alt="Product Image" />
             </Flex>
             <Flex
               sx={{

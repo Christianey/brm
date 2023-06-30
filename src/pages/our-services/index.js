@@ -144,7 +144,7 @@ export default function OurServices() {
         </Flex>
 
         <Flex justify={"center"} borderRadius={"lg"} position={"relative"}>
-          <Image src="/WhyChooseUsServices.jpg" />
+          <Image src="/WhyChooseUsServices.jpg"  alt="Our Services Page image"/>
         </Flex>
       </Flex>
 

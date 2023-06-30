@@ -18,7 +18,7 @@ export default function WhyChooseUs({ heading, title, text, bgColor, imgSrc }) {
         top={-20}
         right={-20}
       >
-        <Image src={imgSrc} objectFit={"cover"} />
+        <Image src={imgSrc} objectFit={"cover"} alt="Why Choose Us Image"/>
       </Flex>
 
       <Flex

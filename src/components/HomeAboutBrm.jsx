@@ -60,6 +60,7 @@ export default function HomeAboutBrm() {
         bottom={-20}
         right={-10}
         zIndex={3}
+        alt="About Image"
       />
     </>
   );

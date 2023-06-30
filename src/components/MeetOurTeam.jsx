@@ -11,7 +11,7 @@ function ProfileImage({ src }) {
         align={"center"}
         bgColor={"#FF915B14"}
       >
-        <Image src={src} mb={3} />
+        <Image src={src} mb={3} alt="Team members Image" />
         <Text fontSize={"25px"} fontWeight={"600"}>
           Robinson Ebenezer
         </Text>
