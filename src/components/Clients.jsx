@@ -2,10 +2,7 @@ import { Avatar, Box, Circle, Flex, Text } from "@chakra-ui/react";
 import React from "react";
 import { FaQuoteRight } from "react-icons/fa";
 import Slider from "react-slick";
-import {
-  FaChevronLeft,
-  FaChevronRight,
-} from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const Arrow = ({ arrow = "left", onClick, style, className }) => {
   return (
@@ -148,9 +145,9 @@ export function ClientCard({ image, firstName, lastName, job }) {
       >
         <FaQuoteRight size={30} />
         <Text>
-          "Working with BRM has been a game-changer for our farm. Their team of
-          experts helped us optimize our crop yield, reduce our input costs, and
-          improve our overall profitability.”
+          &quot;Working with BRM has been a game-changer for our farm. Their
+          team of experts helped us optimize our crop yield, reduce our input
+          costs, and improve our overall profitability&quot;
         </Text>
         <Box as="hr" my={2} />
         <Flex gap={4}>
