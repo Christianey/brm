@@ -31,7 +31,11 @@ export default function WelcomeToGallery() {
           agriculture. Immerse yourself in a visual journey that highlights the
           beauty, diversity, and innovation within the agricultural industry.
         </Text>
-        <LearnMoreButton variant="primary" />
+        <LearnMoreButton
+          variant="primary"
+          link="http://instagram.com/biorresourcesmanagement" 
+          external
+        />
       </Flex>
 
       <Grid

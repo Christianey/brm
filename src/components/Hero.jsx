@@ -2,7 +2,7 @@ import { Flex, Image, Text } from "@chakra-ui/react";
 import React from "react";
 import LearnMoreButton from "./LearnMoreButton";
 
-export default function Hero({ showButton, text, title, heroImage }) {
+export default function Hero({ showButton, text, title, heroImage, link }) {
   return (
     <Flex
       w="full"
@@ -34,7 +34,7 @@ export default function Hero({ showButton, text, title, heroImage }) {
         <Text fontSize={["1.5rem", "2rem", "3rem", "3rem"]} fontWeight={"700"}>
           {text}
         </Text>
-        {showButton && <LearnMoreButton variant="secondary" />}
+        {showButton && <LearnMoreButton variant="secondary" link={link} />}
       </Flex>
 
       <Image

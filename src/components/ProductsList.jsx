@@ -13,7 +13,7 @@ const ProductCards = () => {
 };
 export default function ProductsList({ items = 1 }) {
   return (
-    <Flex px={[1, 4, 4, 40]} wrap={"wrap"} justify={"center"}>
+    <Flex px={[1, 4, 4, 40]} wrap={"wrap"} justify={"center"} id="products">
       {[...Array(items)].map((item, i) => (
         <ProductCards key={i} />
       ))}

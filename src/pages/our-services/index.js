@@ -74,9 +74,10 @@ export default function OurServices() {
         title={"Our Services"}
         text={"Discover Our Comprehensive Freight Agricultural Services"}
         showButton
+        link={"#services"}
       />
 
-      <Box maxW={"1000px"} px={10} mx="auto" my={6}>
+      <Box maxW={"1000px"} px={10} mx="auto" my={6} id="services">
         <Text color={"brand.primary"}>OUR SERVICES</Text>
         <Flex
           gap={[2, 2, 4, 10]}
@@ -121,7 +122,11 @@ export default function OurServices() {
           }
         />
         <Flex maxW="1020px" mx="auto">
-          <LearnMoreButton buttonText="Let's Talk" buttonProps={{ml: "auto", mr: 8}} />
+          <LearnMoreButton
+            buttonText="Let's Talk"
+            buttonProps={{ ml: "auto", mr: 8 }}
+            link="contact-us"
+          />
         </Flex>
       </Box>
 
@@ -137,14 +142,17 @@ export default function OurServices() {
       >
         <Flex direction={"column"} flexBasis={["100%", "100%", "70%", "50%"]}>
           <Text color="brand.primary">WHY CHOOSE US</Text>
-          <Text fontWeight={"600"} fontSize={"40px"}>
+          <Text
+            fontWeight={"600"}
+            fontSize={["1.5rem", "1.5rem", "2.5rem", "2.5rem"]}
+          >
             To receive high quality and personalized service and products,
             choose us to meet your demand.
           </Text>
         </Flex>
 
         <Flex justify={"center"} borderRadius={"lg"} position={"relative"}>
-          <Image src="/WhyChooseUsServices.jpg"  alt="Our Services Page image"/>
+          <Image src="/WhyChooseUsServices.jpg" alt="Our Services Page image" />
         </Flex>
       </Flex>
 

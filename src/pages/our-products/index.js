@@ -32,6 +32,7 @@ export default function OurProducts() {
         title={"Our Products"}
         text={"Explore Our High-Quality Agricultural Products"}
         showButton
+        link={"#products"}
       />
       <AboutBRM
         leftSide={<Image src="ProductsPageBRM.jpg" />}

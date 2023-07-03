@@ -4,7 +4,6 @@ import Hero from "@/components/Hero";
 import AboutBRM from "@/components/AboutBRM";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import OurCoreValues from "@/components/OurCoreValues";
-import MeetOurTeam from "@/components/MeetOurTeam";
 import WelcomeToGallery from "@/components/WelcomeToGallery";
 
 export default function AboutUs() {
@@ -35,7 +34,6 @@ export default function AboutUs() {
       />
 
       <OurCoreValues />
-      <MeetOurTeam />
       <WelcomeToGallery />
     </>
   );
