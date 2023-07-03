@@ -9,10 +9,12 @@ import {
 import Link from "next/link";
 import React, { useState } from "react";
 import { MdClose, MdMenu, MdOutlineShoppingCart } from "react-icons/md";
-
+import { usePathname } from "next/navigation";
 const navLinks = ["Home", "About Us", "Our Products", "Our Services"];
-const CustomNav = ({ isMobile, display = "flex" }) => {
+
+const CustomNav = ({ isMobile, display = "flex", setShowNav }) => {
   const mobile = { flexDirection: "column", alignItems: "center", py: 4 };
+  const pathname = usePathname();
 
   return (
     <Flex
@@ -25,27 +27,28 @@ const CustomNav = ({ isMobile, display = "flex" }) => {
       {...(isMobile && mobile)}
     >
       {navLinks.map((link) => {
-        if (link === "Home")
+        const isActive = pathname.includes(
+          link.toLowerCase().replace(" ", "-")
+        );
+
+        if (link === "Home") {
           return (
             <Link
-              // style={({ isActive }) => {
-              //   return {
-              //     borderBottom: isActive ? "4px solid #FF915B" : "",
-              //   };
-              // }}
+              style={{
+                borderBottom: pathname === "/" ? "4px solid #FF915B" : "",
+              }}
+              onClick={() => setShowNav(false)}
               key={link}
               href={"/"}
             >
               {link}
             </Link>
           );
+        }
         return (
           <Link
-            // style={({ isActive }) => {
-            //   return {
-            //     borderBottom: isActive ? "4px solid #FF915B" : "",
-            //   };
-            // }}
+            style={{ borderBottom: isActive ? "4px solid #FF915B" : "" }}
+            onClick={() => setShowNav(false)}
             key={link}
             href={`/${link.toLowerCase().replace(" ", "-")}`}
           >
@@ -55,11 +58,10 @@ const CustomNav = ({ isMobile, display = "flex" }) => {
       })}
       {isMobile && (
         <Link
-          // style={({ isActive }) => {
-          //   return {
-          //     borderBottom: isActive ? "4px solid #FF915B" : "",
-          //   };
-          // }}
+          style={{
+            borderBottom: pathname === "/contact-us" ? "4px solid #FF915B" : "",
+          }}
+          onClick={() => setShowNav(false)}
           href={"/contact-us"}
         >
           Contact Us
@@ -80,15 +82,28 @@ export default function Nav() {
         minH="10vh"
         gap={4}
       >
-        <Flex className="bor" alignItems={"center"} as={Link} gap={2} href={"/"}>
-          <Image height={"10"} src="/BRMLogoBlack.png" alt="BRM Logo"/>
-          <Text fontWeight={"600"} lineHeight={1} display={["none", "none", "none", "block"]}>
+        <Flex
+          className="bor"
+          alignItems={"center"}
+          as={Link}
+          gap={2}
+          href={"/"}
+        >
+          <Image height={"10"} src="/BRMLogoBlack.png" alt="BRM Logo" />
+          <Text
+            fontWeight={"600"}
+            lineHeight={1}
+            display={["none", "none", "none", "block"]}
+          >
             Bior Resources <br /> Management
           </Text>
         </Flex>
 
         <Flex gap={4} ml="auto" fontWeight={"500"} alignItems={"center"}>
-          <CustomNav display={["none", "none", "flex", "flex"]} />
+          <CustomNav
+            display={["none", "none", "flex", "flex"]}
+            setShowNav={setShowNav}
+          />
         </Flex>
         <IconButton
           icon={showNav ? <MdClose /> : <MdMenu />}
@@ -118,7 +133,7 @@ export default function Nav() {
           <MdOutlineShoppingCart color="#00A784" />
         </Circle>
       </Flex>
-      {showNav && <CustomNav isMobile />}
+      {showNav && <CustomNav setShowNav={setShowNav} isMobile />}
     </nav>
   );
 }
