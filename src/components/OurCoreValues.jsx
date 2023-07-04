@@ -3,7 +3,7 @@ import React from "react";
 
 export default function OurCoreValues() {
   return (
-    <Box maxW={"80%"} mx="auto">
+    <Box maxW={"85rem"} mx="auto" my={4} px={4}>
       <Text
         fontWeight={"600"}
         fontSize={"4rem"}

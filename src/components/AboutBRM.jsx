@@ -2,7 +2,7 @@ import { Box, Flex, Text } from "@chakra-ui/react";
 import React from "react";
 import LearnMoreButton from "./LearnMoreButton";
 
-export default function AboutBRM({ leftSide, title, text, wide }) {
+export default function AboutBRM({ leftSide, title, text, wide, link="our-services/#services" }) {
   return (
     <Flex
       gap={wide ? [20, 20, 14] : 4}
@@ -24,7 +24,7 @@ export default function AboutBRM({ leftSide, title, text, wide }) {
         </Text>
         <Box height="5px" width="100px" bgColor="brand.secondary" my={4} />
         <Text>{text}</Text>
-        <LearnMoreButton variant="primary" buttonProps={{ marginTop: 8 }} link="our-services/#services" />
+        <LearnMoreButton variant="primary" buttonProps={{ marginTop: 8 }} link={link} />
       </Flex>
     </Flex>
   );

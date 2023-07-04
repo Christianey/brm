@@ -5,7 +5,9 @@ import LearnMoreButton from "./LearnMoreButton";
 export default function WelcomeToGallery() {
   return (
     <Flex
-      maxW={"80%"}
+      maxW={"85rem"}
+      my={4}
+      px={4}
       mx="auto"
       wrap={"wrap"}
       justifyContent={"center"}
@@ -33,7 +35,7 @@ export default function WelcomeToGallery() {
         </Text>
         <LearnMoreButton
           variant="primary"
-          link="http://instagram.com/biorresourcesmanagement" 
+          link="http://instagram.com/biorresourcesmanagement"
           external
         />
       </Flex>

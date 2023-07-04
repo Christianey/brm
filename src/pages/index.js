@@ -1,12 +1,12 @@
-import Head from 'next/head'
-import Hero from '@/components/Hero'
-import Benefits from '@/components/Benefits'
-import AboutBRM from '@/components/AboutBRM'
-import WhyChooseUs from '@/components/WhyChooseUs'
-import Products from '@/components/Products'
-import Clients from '@/components/Clients'
-import News from '@/components/News'
-import HomeAboutBrm from '@/components/HomeAboutBrm'
+import Head from "next/head";
+import Hero from "@/components/Hero";
+import Benefits from "@/components/Benefits";
+import AboutBRM from "@/components/AboutBRM";
+import WhyChooseUs from "@/components/WhyChooseUs";
+import Products from "@/components/Products";
+import Clients from "@/components/Clients";
+import News from "@/components/News";
+import HomeAboutBrm from "@/components/HomeAboutBrm";
 
 export default function Home() {
   return (
@@ -32,6 +32,7 @@ export default function Home() {
         text="Bior Resources Management Ltd. Deals majorly on exporting agro
           products. The company exports produce, primarily agricultural raw
           produce across the continents."
+        link="about-us"
         wide
       />
       <WhyChooseUs
@@ -51,5 +52,5 @@ export default function Home() {
       <Clients />
       <News />
     </>
-  )
+  );
 }
