@@ -1,12 +1,19 @@
-import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
+import { Button, Flex, Image, Text } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import React from "react";
 import { MdStar } from "react-icons/md";
 
-export default function ProductCard({ bgColor, imgSrc }) {
+export default function ProductCard({
+  bgColor = "rgba(31, 30, 36, 0.10)",
+  image,
+  description,
+  name,
+}) {
   const router = useRouter();
+
   return (
-    <Box
+    <Flex
+      direction={"column"}
       p={2}
       flexBasis={["100%", "50%", "50%", "33.33333%"]}
       onClick={(e) => {
@@ -20,16 +27,15 @@ export default function ProductCard({ bgColor, imgSrc }) {
         alignItems={"center"}
         justifyContent={"center"}
       >
-        <Image src={imgSrc} alt="Product Image"/>
+        <Image src={image} alt="Product Image" />
       </Flex>
-      <Text fontWeight={"600"}>Raw Cashew Nuts (RCN)</Text>
+      <Text fontWeight={"600"} my={2}>{name}</Text>
 
-      <Text fontSize={"sm"} color={"#777777"}>
-        Cashews are low in sugar and rich in fiber, heart- healthy fats, and
-        plant protein.
+      <Text fontSize={"sm"} color={"#777777"} mb={3}>
+        {description}
       </Text>
 
-      <Flex justify={"space-between"} my={3}>
+      <Flex justify={"space-between"}  mt={"auto"}>
         <Flex>
           <MdStar />
           <MdStar />
@@ -50,6 +56,7 @@ export default function ProductCard({ bgColor, imgSrc }) {
             borderRadius: "none",
           },
         }}
+        
       >
         <Button
           borderColor={"brand.primary"}
@@ -63,6 +70,6 @@ export default function ProductCard({ bgColor, imgSrc }) {
         </Button>
         <Button borderColor={"brand.secondary"}>Add to Cart</Button>
       </Flex>
-    </Box>
+    </Flex>
   );
 }

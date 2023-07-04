@@ -24,7 +24,7 @@ export default function AboutBRM({ leftSide, title, text, wide }) {
         </Text>
         <Box height="5px" width="100px" bgColor="brand.secondary" my={4} />
         <Text>{text}</Text>
-        <LearnMoreButton variant="primary" buttonProps={{ marginTop: 8 }} />
+        <LearnMoreButton variant="primary" buttonProps={{ marginTop: 8 }} link="our-services/#services" />
       </Flex>
     </Flex>
   );

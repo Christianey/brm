@@ -8,7 +8,6 @@ export default function LearnMoreButton({
   buttonProps,
   buttonText = "Learn More",
   link = "about-us",
-  external
 }) {
   return (
     <Button
