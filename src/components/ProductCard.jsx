@@ -1,4 +1,5 @@
 import { Button, Flex, Image, Text } from "@chakra-ui/react";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import { MdStar } from "react-icons/md";
@@ -16,10 +17,8 @@ export default function ProductCard({
       direction={"column"}
       p={2}
       flexBasis={["100%", "50%", "50%", "33.33333%"]}
-      onClick={(e) => {
-        router.push("/product");
-      }}
-      cursor={"pointer"}
+      as={Link}
+      href={{ pathname: "product", query: { image, description, name } }}
     >
       <Flex
         bgColor={bgColor}
@@ -29,13 +28,15 @@ export default function ProductCard({
       >
         <Image src={image} alt="Product Image" />
       </Flex>
-      <Text fontWeight={"600"} my={2}>{name}</Text>
+      <Text fontWeight={"600"} my={2}>
+        {name}
+      </Text>
 
       <Text fontSize={"sm"} color={"#777777"} mb={3}>
         {description}
       </Text>
 
-      <Flex justify={"space-between"}  mt={"auto"}>
+      <Flex justify={"space-between"} mt={"auto"}>
         <Flex>
           <MdStar />
           <MdStar />
@@ -56,7 +57,6 @@ export default function ProductCard({
             borderRadius: "none",
           },
         }}
-        
       >
         <Button
           borderColor={"brand.primary"}

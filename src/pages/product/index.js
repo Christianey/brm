@@ -11,12 +11,17 @@ import {
   Td,
   TableContainer,
 } from "@chakra-ui/react";
+import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/router";
 import React from "react";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 export default function ProductPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
 
+  const name = searchParams.get("name");
+  const description = searchParams.get("description");
+  const image = searchParams.get("image");
   return (
     <>
       <Flex
@@ -39,7 +44,7 @@ export default function ProductPage() {
             px={2}
           >
             <Flex justify={"center"} align={"center"}>
-              <Image src="/SoyaBeans.png" alt="Product Image" />
+              <Image src={image} alt="Product Image" />
             </Flex>
             <Flex
               sx={{
@@ -54,13 +59,13 @@ export default function ProductPage() {
               gap={2}
             >
               <Box>
-                <Image src="/SoyaBeans.png" />
+                <Image src={image} />
               </Box>
               <Box>
-                <Image src="/SoyaBeans.png" />
+                <Image src={image} />
               </Box>
               <Box>
-                <Image src="/SoyaBeans.png" />
+                <Image src={image} />
               </Box>
             </Flex>
           </Flex>
@@ -77,18 +82,14 @@ export default function ProductPage() {
               fontWeight={"500"}
               mb={6}
             >
-              SOYA BEANS
+              {name}
             </Text>
 
             <Text color={"#77777780"} fontSize={"1.25rem"} fontWeight={"500"}>
               Product Caption
             </Text>
             <Text fontSize={"1.25rem"} fontWeight={"400"} mb={4}>
-              Soybeans are high in protein, fiber, and healthy fats, making them
-              a popular ingredient in vegetarian and vegan diets. They are used
-              to make a variety of products, including tofu, soy milk, soy
-              sauce, and tempeh. Soybean oil is also widely used in cooking and
-              as a source of biodiesel fuel.
+              {description}
             </Text>
             <Text
               fontSize={".7rem"}
@@ -126,7 +127,7 @@ export default function ProductPage() {
             </Thead>
             <Tbody>
               <Tr display={["none", "table-row", "table-row", "table-row"]}>
-                <Td colSpan={2}>SOYA BEANS</Td>
+                <Td colSpan={2}>{name}</Td>
                 <Td>Country</Td>
                 <Td>Nigeria</Td>
               </Tr>
