@@ -35,7 +35,7 @@ const CustomNav = ({ isMobile, display = "flex", setShowNav }) => {
           return (
             <Link
               style={{
-                borderBottom: pathname === "/" ? "4px solid #FF915B" : "",
+                borderBottom: pathname === "/" ? "4px solid #FF915B" : null,
               }}
               onClick={() => setShowNav(false)}
               key={link}
@@ -47,7 +47,7 @@ const CustomNav = ({ isMobile, display = "flex", setShowNav }) => {
         }
         return (
           <Link
-            style={{ borderBottom: isActive ? "4px solid #FF915B" : "" }}
+            style={{ borderBottom: isActive ? "4px solid #FF915B" : null }}
             onClick={() => setShowNav(false)}
             key={link}
             href={`/${link.toLowerCase().replace(" ", "-")}`}
@@ -59,7 +59,7 @@ const CustomNav = ({ isMobile, display = "flex", setShowNav }) => {
       {isMobile && (
         <Link
           style={{
-            borderBottom: pathname === "/contact-us" ? "4px solid #FF915B" : "",
+            borderBottom: pathname === "/contact-us" ? "4px solid #FF915B" : null,
           }}
           onClick={() => setShowNav(false)}
           href={"/contact-us"}
