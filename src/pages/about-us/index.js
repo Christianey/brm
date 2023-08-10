@@ -17,7 +17,7 @@ export default function AboutUs() {
         }
       />
       <AboutBRM
-        leftSide={<Image src="AboutPageBRM.jpg" alt="About Page Image"/>}
+        leftSide={<Image src="/AboutPageBRM.jpg" alt="About Page Image"/>}
         title="Cultivating Ideas for Growth"
         text={
           "Bior Resources Management ltd. Is a business organization whose main activities are trading both locally and internationally of Agro allied produce. Bior Resources Management Ltd. Deals majorly on exporting agro products. The company exports produce, primarily agricultural raw produce across the continents."

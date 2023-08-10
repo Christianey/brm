@@ -15,6 +15,7 @@ import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/router";
 import React from "react";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
+
 export default function ProductPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
