@@ -1,7 +1,11 @@
 import Footer from "@/components/Footer";
 import Nav from "@/components/Nav";
+import { persistor, store } from "@/store";
 import "@/styles/globals.css";
-import {  ChakraBaseProvider, extendTheme } from "@chakra-ui/react";
+import { ChakraBaseProvider, Spinner, extendTheme } from "@chakra-ui/react";
+import Head from "next/head";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 
 const theme = extendTheme({
   colors: {
@@ -18,10 +22,20 @@ const theme = extendTheme({
 
 export default function App({ Component, pageProps }) {
   return (
-    <ChakraBaseProvider theme={theme}>
-      <Nav />
-      <Component {...pageProps} />
-      <Footer />
-    </ChakraBaseProvider>
+    <Provider store={store}>
+      <PersistGate
+        loading={<Spinner size={"10rem"} color="green" />}
+        persistor={persistor}
+      >
+        <Head>
+          <title>BRM</title>
+        </Head>
+        <ChakraBaseProvider theme={theme}>
+          <Nav />
+          <Component {...pageProps} />
+          <Footer />
+        </ChakraBaseProvider>
+      </PersistGate>
+    </Provider>
   );
 }

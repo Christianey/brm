@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   Circle,
   Flex,
@@ -10,6 +11,9 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { MdClose, MdMenu, MdOutlineShoppingCart } from "react-icons/md";
 import { usePathname } from "next/navigation";
+import { useSelector } from "react-redux";
+import { selectCartItems } from "@/features/cartSlice";
+import { useRouter } from "next/router";
 const navLinks = ["Home", "About Us", "Our Products", "Our Services"];
 
 const CustomNav = ({ isMobile, display = "flex", setShowNav }) => {
@@ -59,7 +63,8 @@ const CustomNav = ({ isMobile, display = "flex", setShowNav }) => {
       {isMobile && (
         <Link
           style={{
-            borderBottom: pathname === "/contact-us" ? "4px solid #FF915B" : null,
+            borderBottom:
+              pathname === "/contact-us" ? "4px solid #FF915B" : null,
           }}
           onClick={() => setShowNav(false)}
           href={"/contact-us"}
@@ -72,15 +77,25 @@ const CustomNav = ({ isMobile, display = "flex", setShowNav }) => {
 };
 export default function Nav() {
   const [showNav, setShowNav] = useState(false);
+  const router = useRouter();
+
+  const { length: noOfItems } = useSelector(selectCartItems);
 
   return (
-    <nav>
+    <>
       <Flex
+        as="nav"
+        position={"sticky"}
+        top={0}
+        h={"5rem"}
+        w="full"
+        bg={"white"}
+        left={0}
         py={[1, 2, 2, 4]}
         px={[1, 4, 10, 20]}
         alignItems={"center"}
-        minH="10vh"
         gap={4}
+        zIndex={200}
       >
         <Flex
           className="bor"
@@ -129,11 +144,31 @@ export default function Nav() {
           Contact us
         </Button>
 
-        <Circle color={"branding.primary"} bg="#00A78433" size={10}>
+        <Circle
+          position={"relative"}
+          color={"branding.primary"}
+          bg="#00A78433"
+          size={10}
+          cursor={"pointer"}
+          onClick={() => {
+            router.push("/check-out");
+          }}
+        >
+          <Circle
+            position={"absolute"}
+            size={"1rem"}
+            bg="#FF915B"
+            right={0}
+            top={0}
+            color={"white"}
+            p={1}
+          >
+            <Text fontSize={".5rem"}>{noOfItems}</Text>
+          </Circle>
           <MdOutlineShoppingCart color="#00A784" />
         </Circle>
       </Flex>
       {showNav && <CustomNav setShowNav={setShowNav} isMobile />}
-    </nav>
+    </>
   );
 }

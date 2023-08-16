@@ -1,16 +1,28 @@
-import { Button, Flex, Image, Text } from "@chakra-ui/react";
+import {
+  addToCart,
+  removeFromCart,
+  selectCartItemsWithId,
+} from "@/features/cartSlice";
+import { Button, Flex, IconButton, Image, Text } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useState } from "react";
+import { AiFillMinusSquare, AiFillPlusSquare } from "react-icons/ai";
 import { MdStar } from "react-icons/md";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function ProductCard({
+  id,
+  price,
   bgColor = "rgba(31, 30, 36, 0.10)",
   image,
   description,
   name,
 }) {
+  const [addedToCart, setAddedToCart] = useState(false);
+  const item = useSelector((state) => selectCartItemsWithId(state, id));
   const router = useRouter();
+  const dispatch = useDispatch();
 
   return (
     <Flex
@@ -68,7 +80,54 @@ export default function ProductCard({
         >
           Buy Now
         </Button>
-        <Button borderColor={"brand.secondary"}>Add to Cart</Button>
+        {addedToCart && item.length > 0 ? (
+          <Flex
+            // justify={"space-between"}
+            alignItems={"stretch"}
+            flexGrow={1}
+            flexBasis={"50%"}
+          >
+            <IconButton
+              sx={{ "& > svg": { fill: "brand.secondary" } }}
+              border={"none"}
+              size={"2.5rem"}
+              bg="red"
+              h="100%"
+              icon={<AiFillMinusSquare size={"2rem"} />}
+              onClick={(e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                dispatch(removeFromCart(id));
+              }}
+            />
+            <Text alignSelf={"center"}>{item.length}</Text>
+            <IconButton
+              sx={{ "& > svg": { fill: "brand.secondary" } }}
+              border={"none"}
+              bg="red"
+              h="100%"
+              w="3rem"
+              icon={<AiFillPlusSquare size={"2rem"} />}
+              onClick={(e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                dispatch(addToCart({ id, image, description, name, price }));
+              }}
+            />
+          </Flex>
+        ) : (
+          <Button
+            borderColor={"brand.secondary"}
+            onClick={(e) => {
+              e.stopPropagation();
+              e.preventDefault();
+              dispatch(addToCart({ id, image, description, name, price }));
+              setAddedToCart(true);
+            }}
+          >
+            Add to Cart
+          </Button>
+        )}
       </Flex>
     </Flex>
   );

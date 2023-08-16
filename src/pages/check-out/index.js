@@ -9,9 +9,11 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { FaRegCreditCard } from "react-icons/fa";
-import React from "react";
+import React, { useMemo, useState } from "react";
+import { useSelector } from "react-redux";
+import { selectCartItems, selectCartTotal } from "@/features/cartSlice";
 
-const CartItem = () => {
+const CartItem = ({ name, price, amount, image }) => {
   return (
     <Flex>
       <Flex
@@ -21,19 +23,19 @@ const CartItem = () => {
         justify={"center"}
         align={"center"}
       >
-        <Image src="/product1.png" alt="Check-out Page Image"/>
+        <Image src={image} alt="Check-out Page Image" />
       </Flex>
 
       <Flex direction={"column"} gap={2} px={4}>
         <Text fontSize={"1.25rem"} fontWeight={"500"}>
-          Grapes (Pinot Noir)
+          {name}
         </Text>
-        <Flex justify={"space-between"} fontSize={".625rem"}>
+        <Flex justify={"space-between"} fontSize={".625rem"} gap={2}>
           <Text color="#777">Size 2 Bunches</Text>
           <Text>Color Purple</Text>
         </Flex>
         <Text mt="auto" fontWeight={"500"}>
-          NGN1, 000 x 02
+          NGN{price} x {amount}
         </Text>
       </Flex>
     </Flex>
@@ -41,6 +43,20 @@ const CartItem = () => {
 };
 
 export default function CheckOut() {
+  const items = useSelector(selectCartItems);
+  const total = useSelector(selectCartTotal);
+  const [groupedItemsInBasket, setGroupedItemsInBasket] = useState([]);
+
+  useMemo(() => {
+    const groupedItems = items.reduce((results, item) => {
+      (results[item.id] = results[item.id] || []).push(item);
+
+      return results;
+    }, {});
+
+    setGroupedItemsInBasket(groupedItems);
+  }, [items]);
+
   return (
     <Box mx={"auto"} maxW={["100%", "100%", "80%", "65%"]}>
       <Box>
@@ -215,9 +231,10 @@ export default function CheckOut() {
 
           <Divider my={6} />
 
-          <CartItem />
-          <CartItem />
-          <CartItem />
+          {Object.entries(groupedItemsInBasket).map(([key, items]) => {
+            const item = items[0];
+            return <CartItem {...item} amount={items.length} />;
+          })}
 
           <Divider my={10} mt="auto" />
 
@@ -250,7 +267,7 @@ export default function CheckOut() {
             px={2}
           >
             <Text>Total</Text>
-            <Text>NGN2450.00</Text>
+            <Text>{total}</Text>
           </Flex>
         </Flex>
       </Flex>
