@@ -233,7 +233,7 @@ export default function CheckOut() {
 
           {Object.entries(groupedItemsInBasket).map(([key, items]) => {
             const item = items[0];
-            return <CartItem {...item} amount={items.length} />;
+            return <CartItem key={key} {...item} amount={items.length} />;
           })}
 
           <Divider my={10} mt="auto" />
@@ -252,7 +252,7 @@ export default function CheckOut() {
             align={"center"}
             justify={"space-between"}
           >
-            <Text>Disount</Text>
+            <Text>Discount</Text>
             <Text>NGN -50 </Text>
           </Flex>
           <Flex
@@ -267,7 +267,7 @@ export default function CheckOut() {
             px={2}
           >
             <Text>Total</Text>
-            <Text>{total}</Text>
+            <Text>N{total}</Text>
           </Flex>
         </Flex>
       </Flex>

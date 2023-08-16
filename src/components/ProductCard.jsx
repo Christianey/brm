@@ -19,8 +19,8 @@ export default function ProductCard({
   description,
   name,
 }) {
-  const [addedToCart, setAddedToCart] = useState(false);
   const item = useSelector((state) => selectCartItemsWithId(state, id));
+  const [addedToCart, setAddedToCart] = useState(item.length > 0);
   const router = useRouter();
   const dispatch = useDispatch();
 
@@ -28,9 +28,15 @@ export default function ProductCard({
     <Flex
       direction={"column"}
       p={2}
-      flexBasis={["100%", "50%", "50%", "33.33333%"]}
-      as={Link}
-      href={{ pathname: "product", query: { image, description, name } }}
+      flexBasis={["100%", "50%", "50%", "33.33333%"]} cursor={"pointer"}
+      onClick={(e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        router.push({
+          pathname: "product",
+          query: { image, description, name },
+        });
+      }}
     >
       <Flex
         bgColor={bgColor}
@@ -73,20 +79,13 @@ export default function ProductCard({
         <Button
           borderColor={"brand.primary"}
           onClick={(e) => {
-            e.stopPropagation();
-            e.preventDefault();
             router.push("/check-out");
           }}
         >
           Buy Now
         </Button>
         {addedToCart && item.length > 0 ? (
-          <Flex
-            // justify={"space-between"}
-            alignItems={"stretch"}
-            flexGrow={1}
-            flexBasis={"50%"}
-          >
+          <Flex alignItems={"stretch"} flexGrow={1} flexBasis={"50%"}>
             <IconButton
               sx={{ "& > svg": { fill: "brand.secondary" } }}
               border={"none"}
