@@ -82,20 +82,22 @@ export default function Nav() {
   const { length: noOfItems } = useSelector(selectCartItems);
 
   return (
-    <>
+    <Box
+      position={"sticky"}
+      top={0}
+      minH={"5rem"}
+      zIndex={200}
+      bg={"white"}
+      boxShadow={"0px 5px 5px 0px rgba(0,0,0,.2)"}
+    >
       <Flex
         as="nav"
-        position={"sticky"}
-        top={0}
-        h={"5rem"}
         w="full"
-        bg={"white"}
         left={0}
         py={[1, 2, 2, 4]}
         px={[1, 4, 10, 20]}
         alignItems={"center"}
         gap={4}
-        zIndex={200}
       >
         <Flex
           className="bor"
@@ -169,6 +171,6 @@ export default function Nav() {
         </Circle>
       </Flex>
       {showNav && <CustomNav setShowNav={setShowNav} isMobile />}
-    </>
+    </Box>
   );
 }
