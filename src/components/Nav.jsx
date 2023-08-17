@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  Center,
   Circle,
   Flex,
   IconButton,
@@ -82,8 +83,10 @@ export default function Nav() {
   const { length: noOfItems } = useSelector(selectCartItems);
 
   return (
-    <Box
+    <Center
+      flexDirection={"column"}
       position={"sticky"}
+      py={"1rem"}
       top={0}
       minH={"5rem"}
       zIndex={200}
@@ -171,6 +174,6 @@ export default function Nav() {
         </Circle>
       </Flex>
       {showNav && <CustomNav setShowNav={setShowNav} isMobile />}
-    </Box>
+    </Center>
   );
 }
